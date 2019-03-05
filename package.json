@@ -1,0 +1,19 @@
+{
+  "name": "zac-panel-service",
+  "version": "1.0.0",
+  "description": "A panel for an improved task creation for Zac",
+  "main": "index.js",
+  "author": "vitorDaynno",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "1.18.3",
+    "express": "4.16.4",
+    "mongoose": "5.4.17",
+    "node-restful": "0.2.6"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  }
+}
