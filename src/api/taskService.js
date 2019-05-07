@@ -13,7 +13,7 @@ tasks.getAll = (req, res) => {
             return tasksEntity.map((task) => {
                 const entity = {};
                 entity.name = task.name;
-                entity.usuId = task.usuId;
+                entity.date = dateHelper.parseDate(task.date);
                 entity.hour = dateHelper.parseHour(task.date);
                 return entity;
             });
