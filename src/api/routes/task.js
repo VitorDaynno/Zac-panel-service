@@ -6,4 +6,6 @@ module.exports = (server) => {
     server.use('/api', router);
 
     tasks.register(router, '/tasks');
+
+    router.route('/tasks').get(tasks.getAll);
 };
