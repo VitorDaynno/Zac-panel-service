@@ -2,9 +2,10 @@ class DateHelper {
     parseDate(dateStr) {
         this.dateStr = dateStr;
         const date = new Date(dateStr);
-        const day = date.getDate() + 1;
+        let day = date.getDate() + 1;
+        day = day > 9 ? day : `0${day}`;
         let month = date.getMonth() + 1;
-        month = month < 9 ? `0${month}` : month;
+        month = month <= 9 ? `0${month}` : month;
         const year = date.getFullYear();
         return `${day}/${month}/${year}`;
     }

@@ -3,7 +3,7 @@ const DateHelper = require('../../config/datehelper');
 const dateHelper = new DateHelper();
 const tasks = require('../models/tasks');
 
-tasks.methods(['post', 'put', 'delete']);
+tasks.methods(['put', 'delete']);
 tasks.updateOptions({ new: true, runValidators: true });
 
 tasks.getAll = (req, res) => {
@@ -19,6 +19,30 @@ tasks.getAll = (req, res) => {
             });
         }).then((tasksEntity) => {
             res.status(200).json(tasksEntity);
+        });
+};
+
+tasks.createTask = (req, res) => {
+    const chain = Promise.resolve();
+    const { body } = req;
+    chain
+        .then(() => {
+            const entity = {};
+            entity.name = body.name;
+            return entity;
+        })
+        .then((entity) => {
+            tasks
+                .create(entity)
+                .then((task) => {
+                    res.status(201).json(task);
+                })
+                .catch((error) => {
+                    res.status(500).json(error);
+                });
+        })
+        .catch((error) => {
+            res.status(500).json(error);
         });
 };
 

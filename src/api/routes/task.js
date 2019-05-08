@@ -8,4 +8,5 @@ module.exports = (server) => {
     tasks.register(router, '/tasks');
 
     router.route('/tasks').get(tasks.getAll);
+    router.route('/tasks').post(tasks.createTask);
 };
