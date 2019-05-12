@@ -1,4 +1,4 @@
-const DateHelper = require('../../config/datehelper');
+const DateHelper = require('../helpers/datehelper');
 
 const dateHelper = new DateHelper();
 const tasks = require('../models/tasks');
