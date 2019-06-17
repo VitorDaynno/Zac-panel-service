@@ -21,4 +21,4 @@ const tokenAuthSchema = new mongoose.Schema({
     },
 });
 
-module.exports = restful.model('TokenAuth', tokenAuthSchema);
+module.exports = restful.model('Tokens', tokenAuthSchema);

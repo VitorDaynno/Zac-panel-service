@@ -1,20 +1,22 @@
 const jwt = require('jsonwebtoken');
 
 class JWTHelper {
-    createToken(user) {
-        return jwt.sign(
-            user,
+    createToken(entity) {
+        this.entity = entity;
+        const jwtToken = jwt.sign(
+            this.entity,
             process.env.JWT_SECRET,
-            { expiresIn: process.env.JWT_EXPIRES_IN },
+            { expiresIn: process.env.JWT_EXPIRES_INS },
         );
+        return jwtToken;
     }
 
     verifyToken(req, res, next) {
+        const authorization = req.headers.authorization;
         const chain = Promise.resolve();
-
         chain
             .then(() => {
-                let token = req.headers.authorization;
+                let token = authorization;
                 if (!token || token === '') {
                     const error = { code: 403, message: 'The token does not exist or is empty' };
                     throw error;
@@ -46,6 +48,7 @@ class JWTHelper {
     }
 
     decodedToken(token) {
+        this.token = token;
         return jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
             if (error) {
                 throw error;
