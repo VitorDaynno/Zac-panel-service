@@ -31,7 +31,7 @@ tokenAuth.auth = (req, res) => {
                 res.status(200).json(response);
             })
             .catch((error) => {
-                res.status(500).json({ error: error.toString() });
+                res.status(500).json({ error });
             });
     }
 };
