@@ -6,7 +6,7 @@ class JWTHelper {
         const jwtToken = jwt.sign(
             this.entity,
             process.env.JWT_SECRET,
-            { expiresIn: process.env.JWT_EXPIRES_INS },
+            { expiresIn: process.env.JWT_EXPIRES_IN },
         );
         return jwtToken;
     }
