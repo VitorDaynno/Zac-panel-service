@@ -22,7 +22,7 @@ class JWTHelper {
                     throw error;
                 } else {
                     token = token.split(' ');
-                    if (!token.length === 2) {
+                    if (!(token.length == 2)) {
                         const error = { code: 403, message: 'The token is badly formatted' };
                         throw error;
                     }
